@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- pom.xml: 메이븐 설정 파일.(메이븐 프로젝트에서 모든 라이브러리 관리는 메이븐 담당) 수정후 항상 메이븐 빌드를 해야한다. 실행이 안되면 clean해보기  -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -115,7 +116,58 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>        
+		</dependency>
+		
+<!-- 		custom -->
+		<!-- database -->
+<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+<!-- 마이바티스: xml로 sql쿼리 작성  -->
+<dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis</artifactId>
+    <version>3.5.4</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+<!-- mybatis-spring: 마이바티스, 스프링 연동  -->
+<dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis-spring</artifactId>
+    <version>2.0.4</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+<!-- spring-jdbc: 스프링에서 db접속하기 위한 api -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-jdbc</artifactId>
+    <version>${org.springframework-version}</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
+<!-- jdbc: 데이터베이스 커넥션풀.(미리 db연결) -->
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-dbcp2</artifactId>
+    <version>2.7.0</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4 -->
+<!-- log4jdbc-log4j2-jdbc4: 로깅. db연동하는 쿼리를 콘솔이나 파일 로그로 볼 수 있게 한다. -->
+<dependency>
+    <groupId>org.bgee.log4jdbc-log4j2</groupId>
+    <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+    <version>1.16</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<!-- mysql: mysql 또는 마리아db연동  -->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.19</version>
+</dependency>
+		        
 	</dependencies>
     <build>
         <plugins>
