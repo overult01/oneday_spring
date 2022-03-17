@@ -24,8 +24,7 @@
 	<bean id="sqlSessionFactory"
 	class="org.mybatis.spring.SqlSessionFactoryBean">
 	<property name="dataSource" ref="dataSource" />
-	<property name="mapperLocations"
-	value="classpath:/sqlmap/**/*_SQL.xml" /> <!--  classpath:/sqlmap/**/*_SQL.xml -> /src/main/resources/sqlmap/ 로 시작하고, _SQL.xml로 끝나는 파일들을 매퍼파일로 쓰겠다고 스프링에게 전달  -->
+	<property name="mapperLocations" value="classpath:/sqlmap/*_SQL.xml" /> <!--  classpath:/sqlmap/**/*_SQL.xml -> /src/main/resources/sqlmap/ 로 시작하고, _SQL.xml로 끝나는 파일들을 매퍼파일로 쓰겠다고 스프링에게 전달  -->
 	</bean>
  
 <!-- sqlSessionTemplate: sqlSessionFactory 객체를 생성자로 받는다. 따라서 이 객체는 sqlSession객체가 가지고 있는 DB접속정보, 매퍼파일의 위치를 알 수 있게 된다. -->
