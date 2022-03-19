@@ -16,8 +16,10 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public String create(Map<String, Object> map) {
 		
+		System.out.println("서비스 호출");
 		// dao.insert 메서드 실행 
 		int affectRowCount = this.dao.insert(map);
+		System.out.println("affectRowCount 받아옴: affectRowCount");
 		if (affectRowCount == 1 ) { // insert구문은 성공시 1, 실패시 0 리턴.
 			System.out.println("입력 성공");
 			return map.get("title").toString();

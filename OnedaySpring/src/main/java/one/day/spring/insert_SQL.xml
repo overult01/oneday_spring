@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- xml 파일 생성시 config 파일인지 mapper 파일인지 명시하는 설정
+
+config.dtd
+Location : http://mybatis.org/dtd/mybatis-3-config.dtd
+Key : //mybatis.org//DTD Config 3.0//EN
+
+mapper.dtd
+Location : http://mybatis.org/dtd/mybatis-3-mapper.dtd
+Key : //mybatis.org/DTD Mapper 3.0//EN
+ -->
+ 
+<!--  namespace 속성: 쿼리가 여러 개 일 때 namespace를 분리하는 역할  -->
+<mapper namespace="board">
+<!-- 	#{title}은 파라미터로 입력된 키를 값으로 치환  -->
+	<insert id="insert" parameterType="hashMap">
+<!-- 	<![CDATA[]]> : 원시 문자열. <>등이 있어도 태그로 인식하지 않는다. -->
+<!-- 	<![CDATA[insert into text_table (title,writer,contents) values (#{title}, #{writer}, #{contents})]]> -->
+	insert into text_table (title,writer,contents) values (#{title}, #{writer}, #{contents})
+	</insert>
+</mapper>

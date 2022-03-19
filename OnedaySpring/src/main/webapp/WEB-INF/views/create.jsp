@@ -20,7 +20,7 @@
 웹 애플리케이션에서 화면은 웹 브라우저가 랜더링. 따라서 브라우저가 읽을 수 있는 html로 최종 변환할 수 있게 작성. -->
 <!-- 서버는 form태그의 name 속성을 키로, value 속성을 값으로 판단한다. -->
 <h1>글 작성하기</h1>
-<form method = post>
+<form method = post action="create">
 	<p>제목 <input type = text name ="title"> </p>
 	<p>작성자 <input type = text name ="writer"> </p>
 	<p>글 작성 <textarea rows="10" cols="20" name = "contents"></textarea> </p>

@@ -15,8 +15,8 @@ CREATE TABLE `oneday`.`text_table` (
 */
 
 use oneday;
-select * from text_table;
+select * from oneday.text_table;
 
 # http://www.tcpschool.com/mysql/mysql_basic_insert
-insert into text_table(title,writer,contents) values ('hi', 'author', 'balksbklsdkbkdsvdlk');
+insert into text_table(title,writer,contents) values ('mysql에서', '작성', 'balksbklsdkbkdsvdlk');
 

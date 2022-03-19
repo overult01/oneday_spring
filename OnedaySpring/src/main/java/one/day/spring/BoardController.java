@@ -27,18 +27,26 @@ public class BoardController {
 	public ModelAndView create(@RequestParam Map<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
 		
+		
+		System.out.println("post호출");
+		// 입력값을 map으로 받아오긴 한다.
+		System.out.println(map.values()); 
+		System.out.println(map.keySet()); 
+		
 		// 메서드 호출 순서 
 		// controller -> 서비스Impl -> DAO -> sql 매퍼.xml
 		String title = this.service.create(map);
 		if (title == null) {
+			System.out.println("null출력");
 			mv.setViewName("redirect:/create"); // 실패시 다시 입력받기 위해 리다이렉트 
 		}
 		else {
+			System.out.println("정상입력 출력");
 			mv.setViewName("redirect:/detail?title=" + title);
 		}
 		
 		
-		return new ModelAndView("create"); // ModelAndView: 컨트롤러가 반환할 데이터를 담당하는 Model, 화면을 담당하는 View의 경로를  합쳐둔 객체. ModelAndView의 생성자에 String 파라미터가 입력되면 뷰의 경로라고 간주.
+		return mv; // ModelAndView: 컨트롤러가 반환할 데이터를 담당하는 Model, 화면을 담당하는 View의 경로를  합쳐둔 객체. ModelAndView의 생성자에 String 파라미터가 입력되면 뷰의 경로라고 간주.
 		
 	}
 

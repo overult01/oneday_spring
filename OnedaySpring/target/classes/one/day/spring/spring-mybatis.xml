@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<!-- spring-mybatis.xml 파일 대신  -->
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+<!-- DB접속하기 위한 정보 설정  -->
+<!-- for mysql -->
+<!-- dataSource: DB관련 정보  -->
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+			<property name="url" value="jdbc:mysql://127.0.0.1:3306/oneday?serverTimezone=UTC"/>	
+			<property name="username" value="emp"/>
+			<property name="password" value="12345678"/>		
+</bean>
+	
+<!-- 	sqlSessionFactory: DB와 연결을 맺고 끊어질 때까지의 라이프 사이클을 관리하는 sqlSession 객체를 만든다. -->
+<!-- 프로퍼티는 두개. 데이터 소스를 설정하는 곳, 매퍼 파일의 위치 지정 xml  -->
+	<bean id="sqlSessionFactory"
+	class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dataSource" />
+	<property name="configLocation" value="classpath:one/day/spring/mybatis-config.xml"/> <!-- classpath: 은 src/main을 대신하는 것  -->
+<!-- 	<property name="mapperLocations" value="classpath*:sqlmap/**/*.xml" />  --><!--  classpath:/sqlmap/**/*_SQL.xml -> /src/main/resources/sqlmap/ 로 시작하고, _SQL.xml로 끝나는 파일들을 매퍼파일로 쓰겠다고 스프링에게 전달  -->
+	<property name="mapperLocations" value="classpath:one/day/spring/*_SQL.xml" /> 
+	</bean>
+ 
+<!-- sqlSessionTemplate: DB에 개별적으로 쿼리를 실행시키는 객체. sqlSessionFactory 객체를 생성자로 받는다. 따라서 이 객체는 sqlSession객체가 가지고 있는 DB접속정보, 매퍼파일의 위치를 알 수 있게 된다. -->
+ 	<bean id="sqlSessionTemplate"
+	class="org.mybatis.spring.SqlSessionTemplate">
+	<constructor-arg ref="sqlSessionFactory" />
+ 	</bean> 	
+
+<!-- annotation설정  --> 	
+<context:component-scan base-package="one.day.spring" />
+</beans>
+
+
